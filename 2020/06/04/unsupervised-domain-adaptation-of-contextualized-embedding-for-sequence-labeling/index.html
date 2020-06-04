@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="论文笔记,NER,无监督," />
 
 
 
@@ -79,16 +79,19 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="背景像BERT、ELMO这些预训练的语言模型都是在受限的几个文本上训练的。如果想把这些预训练语言模型引入到其他领域该如何做呢？比如历史文本是18世纪的，这种以前的用语与现在风格差别还是比较大的。作者基于这种情景，提出了AdaptaBERT这一模型。 方法场景设置：source domain和基于该domain下的标注数据；target domain和该domain下待标注的数据。source do">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/06/04/hello-world/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:title" content="unsupervised domain adaptation of contextualized embedding for sequence labeling">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/index.html">
+<meta property="og:site_name" content="小二郎">
+<meta property="og:description" content="背景像BERT、ELMO这些预训练的语言模型都是在受限的几个文本上训练的。如果想把这些预训练语言模型引入到其他领域该如何做呢？比如历史文本是18世纪的，这种以前的用语与现在风格差别还是比较大的。作者基于这种情景，提出了AdaptaBERT这一模型。 方法场景设置：source domain和基于该domain下的标注数据；target domain和该domain下待标注的数据。source do">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-04T07:14:17.110Z">
-<meta property="article:modified_time" content="2020-06-04T07:14:17.110Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:published_time" content="2020-06-04T10:53:57.000Z">
+<meta property="article:modified_time" content="2020-06-04T11:31:59.863Z">
+<meta property="article:author" content="chen shuai">
+<meta property="article:tag" content="论文笔记">
+<meta property="article:tag" content="NER">
+<meta property="article:tag" content="无监督">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/04/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>unsupervised domain adaptation of contextualized embedding for sequence labeling | 小二郎</title>
   
 
 
@@ -155,7 +158,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">小二郎</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -181,19 +184,39 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             Home
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             Archives
           </a>
@@ -232,16 +255,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="chen shuai">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="小二郎">
     </span>
 
     
@@ -249,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">unsupervised domain adaptation of contextualized embedding for sequence labeling</h1>
         
 
         <div class="post-meta">
@@ -261,7 +284,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-04T15:14:17+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-04T18:53:57+08:00">
                 2020-06-04
               </time>
             
@@ -299,19 +322,14 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>像BERT、ELMO这些预训练的语言模型都是在受限的几个文本上训练的。如果想把这些预训练语言模型引入到其他领域该如何做呢？比如历史文本是18世纪的，这种以前的用语与现在风格差别还是比较大的。作者基于这种情景，提出了AdaptaBERT这一模型。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>场景设置：source domain和基于该domain下的标注数据；target domain和该domain下待标注的数据。source domain和target domain是不同的。</p>
+<p>作者提出两阶段的fine-tune策略：</p>
+<ol>
+<li>Domain tuning：遮蔽语言模型预训练，训练数据是source domain和target domain的数据</li>
+<li>Task tuning：针对任务进行的fine-tune, 训练数据是source domain下的标注数据</li>
+</ol>
+<p>两阶段的fine-tune后，就可以对target domain的数据进行预测了。</p>
 
       
     </div>
@@ -326,6 +344,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag"># 论文笔记</a>
+          
+            <a href="/tags/NER/" rel="tag"># NER</a>
+          
+            <a href="/tags/%E6%97%A0%E7%9B%91%E7%9D%A3/" rel="tag"># 无监督</a>
+          
+        </div>
       
 
       
@@ -394,7 +422,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-author-name" itemprop="name">chen shuai</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -403,7 +431,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives">
               
                   <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
@@ -413,6 +441,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -442,7 +479,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li></ol></div>
             
 
           </div>
@@ -466,7 +503,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">chen shuai</span>
 
   
 </div>
