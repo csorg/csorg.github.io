@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="深度学习," />
 
 
 
@@ -79,12 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="小二郎">
-<meta property="og:url" content="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
+<meta name="description" content="深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。 学习率从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。 BatchSize一般就12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习调参经验">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B0%83%E5%8F%82%E7%BB%8F%E9%AA%8C/index.html">
 <meta property="og:site_name" content="小二郎">
+<meta property="og:description" content="深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。 学习率从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。 BatchSize一般就12">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-04T14:11:42.000Z">
+<meta property="article:modified_time" content="2020-06-05T02:00:58.883Z">
 <meta property="article:author" content="chen shuai">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/论文笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/04/深度学习调参经验/"/>
 
 
 
 
 
-  <title>Tag: 论文笔记 | 小二郎</title>
+  <title>深度学习调参经验 | 小二郎</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,54 +239,157 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>论文笔记<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B0%83%E5%8F%82%E7%BB%8F%E9%AA%8C/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小二郎">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/" itemprop="url">
-              
-                <span itemprop="name">unsupervised domain adaptation of contextualized embedding for sequence labeling</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">深度学习调参经验</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-06-04T18:53:57+08:00"
-              content="2020-06-04" >
-          06-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-04T22:11:42+08:00">
+                2020-06-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。</p>
+<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3><p>从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。</p>
+<h3 id="BatchSize"><a href="#BatchSize" class="headerlink" title="BatchSize"></a>BatchSize</h3><p>一般就128，256没啥好说的</p>
+<h3 id="checkpoint融合"><a href="#checkpoint融合" class="headerlink" title="checkpoint融合"></a>checkpoint融合</h3><p>和Transformer学的骚操作，可以对最后5轮的checkpoint做一个平均，当作模型最后训练的参数值</p>
+<h3 id="loss震荡"><a href="#loss震荡" class="headerlink" title="loss震荡"></a>loss震荡</h3><p>三种可能原因</p>
+<ol>
+<li>数据本身有问题</li>
+<li>lr学习率过大，导致无法找到好的极值点</li>
+<li>batchsize过小</li>
+</ol>
+<h3 id="对于结构的维度"><a href="#对于结构的维度" class="headerlink" title="对于结构的维度"></a>对于结构的维度</h3><p>我习惯从小到大，依次提高。比如lstm维度，从100逐步增加到300或者400</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/" rel="next" title="unsupervised domain adaptation of contextualized embedding for sequence labeling">
+                <i class="fa fa-chevron-left"></i> unsupervised domain adaptation of contextualized embedding for sequence labeling
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -289,6 +397,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -309,8 +421,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -361,6 +482,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习率"><span class="nav-number">1.</span> <span class="nav-text">学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BatchSize"><span class="nav-number">2.</span> <span class="nav-text">BatchSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkpoint融合"><span class="nav-number">3.</span> <span class="nav-text">checkpoint融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss震荡"><span class="nav-number">4.</span> <span class="nav-text">loss震荡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于结构的维度"><span class="nav-number">5.</span> <span class="nav-text">对于结构的维度</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -501,6 +638,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
