@@ -328,6 +328,7 @@
 <h4 id="SGD、BGD、MBGD"><a href="#SGD、BGD、MBGD" class="headerlink" title="SGD、BGD、MBGD"></a>SGD、BGD、MBGD</h4><p>SGD就是每次只计算一个样本的梯度来更新参数值</p>
 <p>BGD就是使用所有的样本的梯度平均值来更新参数值</p>
 <p>MBGD就是采用部分样本的梯度平均值来更新参数值</p>
+<p>按理说是计算每个样本的梯度，然后取均值当作最后该权值的梯度，实际操作中是直接对loss加和再取平均，是一样的效果。</p>
 <h4 id="梯度下降的优化版本"><a href="#梯度下降的优化版本" class="headerlink" title="梯度下降的优化版本"></a>梯度下降的优化版本</h4><p>我们知道如果每次都是对一个batch计算梯度来更新，很容易造成抖动的情况，所以有没有办法能够稳定梯度，也就是不仅考虑当前的梯度还要考虑之前的梯度</p>
 <h5 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h5><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcr4swg8psj30j607wjry.jpg" alt="image-20200312143259002" style="zoom:33%;" />
 
@@ -391,12 +392,20 @@
 <h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3><h4 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h4><p>作者使用三角函数编码和学习编码效果差不多，所以为了简单起见，直接使用了三角函数编码</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd3znzwij3j31a40dcwh4.jpg" alt="image-20200323172721437"></p>
 <h4 id="位置编码为何有效"><a href="#位置编码为何有效" class="headerlink" title="位置编码为何有效"></a>位置编码为何有效</h4><p>论文里面说法是sin cos函数可以引入相关位置信息，就是pos+k的位置编码可以通过pos的编码加一个线性函数表示出来</p>
+<h4 id="相对位置编码"><a href="#相对位置编码" class="headerlink" title="相对位置编码"></a>相对位置编码</h4><p>对原论文中的相似度计算公式展开如下，由于在第四个部分引入了两个参数，很容易导致相对位置信息的丢失。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfkqj79awrj30lr076ac3.jpg" alt="image-20200608114651953"></p>
+<p>所以原班人马对此进行改进，针对相似度计算公式进行的改进，其实就是引入了两个可训练的参数，便于还原相对位置信息</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfkqlame51j308d046wei.jpg" alt="image-20200608114855607"></p>
+<p>后来transformer-xl也提出了一个新的相对位置编码，也是对相似度计算进行的一个改写。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfkr1rc9p7j30kf06a778.jpg" alt="image-20200608120442232"></p>
 <h4 id="MultiHead-Attention"><a href="#MultiHead-Attention" class="headerlink" title="MultiHead Attention"></a>MultiHead Attention</h4><p>首先要意识到multihead attention其实就是self-attention，只不过是切分成几个头然后在拼接的</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd3zskibs8j313g0dgtbf.jpg" alt="image-20200323173148012"></p>
 <p>然后这里的self-attention计算方式 其实采用的是scaled dot-production</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd3zx4w0e7j30rc06wdgg.jpg" alt="image-20200323173611197"></p>
 <p>为什么使用scaled呢</p>
+<p>直观来说，dk维度较大时，激活值趋紧于0或1，导致这层的梯度较小，不能很好的反向传播</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd3zyjt2r0j31gu04ywg0.jpg" alt="image-20200323173732423"></p>
+<h5 id="softmax求导"><a href="#softmax求导" class="headerlink" title="softmax求导"></a>softmax求导</h5><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfktxuudprj30ti0eydhs.jpg" alt="image-20200608134445286"></p>
 <h4 id="为什么使用MultiHead-Attention"><a href="#为什么使用MultiHead-Attention" class="headerlink" title="为什么使用MultiHead Attention"></a>为什么使用MultiHead Attention</h4><p>作者的解释是不同的头可以关注不同的表示空间，这样的话多个头就可以关注多个不同的特征，最后在拼接，这样的话无疑能捕捉到更多的句子信息</p>
 <h4 id="为什么使用layer-normalization而不是batch-normalization"><a href="#为什么使用layer-normalization而不是batch-normalization" class="headerlink" title="为什么使用layer_normalization而不是batch_normalization"></a>为什么使用layer_normalization而不是batch_normalization</h4><p>Batch_normalization简介：</p>
 <p>BN主要是针对batch这一维度上的值做一个规范化，</p>
