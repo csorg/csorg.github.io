@@ -249,6 +249,264 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小二郎">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/" itemprop="url">NLP中的文本增强</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T14:58:29+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。</p>
+<h2 id="词语替换"><a href="#词语替换" class="headerlink" title="词语替换"></a>词语替换</h2><p>对特定的词语或者短语进行同义词替换，可使用同义词典替换</p>
+<h2 id="噪音注入"><a href="#噪音注入" class="headerlink" title="噪音注入"></a>噪音注入</h2><p>随机删除某些词，随机调换某些词的顺序</p>
+<h2 id="回译"><a href="#回译" class="headerlink" title="回译"></a>回译</h2><p>将中文翻译成英文再翻译回中文</p>
+<h2 id="半监督方法"><a href="#半监督方法" class="headerlink" title="半监督方法"></a>半监督方法</h2><p>半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法</p>
+<h3 id="Pseudo-label（伪标签）"><a href="#Pseudo-label（伪标签）" class="headerlink" title="Pseudo label（伪标签）"></a>Pseudo label（伪标签）</h3><ul>
+<li>将有标签部分数据分为两份：train_set&amp;validation_set，并训练出最优的model1</li>
+<li>用model1对未知标签数据(test_set)进行预测，给出伪标签结果pseudo-labeled</li>
+<li>将train_set中抽取一部分做新的validation_set，把剩余部分与pseudo-labeled部分融合作为新的train_set，训练出最优的model2</li>
+<li>再用model2对未知标签数据(test_set)进行预测，得到最终的final result label</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/08/SQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小二郎">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/SQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url">SQL基本概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-08T14:52:48+08:00">
+                2020-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h1><p>主键就是一个一个能够区分不同记录的字段，选取的基本原则是：不使用任何业务相关的字段作为主键。</p>
+<p>实际开发中，通常使用自增整数型的主键，一般命名为id。</p>
+<p>联合主键就是联合几个字断作为主键，通常不使用。</p>
+<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><p>一张表里通过某个字断与另一张表建立关系，这个字断叫做外键。要通过定义外键约束实现。这样在插入的时候，要保证这个外键也是合法有效的。</p>
+<p>不过实际开发中，外键使用的貌似也不多。</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是关系数据库中对某一列或多个列的值进行预排序的数据结构。通过使用索引，可以让数据库系统不必扫描整个表，而是直接定位到符合条件的记录，这样就大大加快了查询速度。</p>
+<p>比如对学生表里学生的成绩得分创建索引。</p>
+<p>可以对一张表创建多个索引。索引的优点是提高了查询效率，缺点是在插入、更新和删除记录时，需要同时修改索引，因此，索引越多，插入、更新和删除记录的速度就越慢。</p>
+<p>对于主键，关系数据库会自动对其创建主键索引。使用主键索引的效率是最高的，因为主键会保证绝对唯一。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1150,7 +1408,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1163,7 +1421,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

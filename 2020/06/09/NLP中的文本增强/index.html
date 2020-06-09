@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深度学习," />
+  <meta name="keywords" content="NLP," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。 学习率从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。 BatchSize一般就12">
+<meta name="description" content="实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。 词语替换对特定的词语或者短语进行同义词替换，可使用同义词典替换 噪音注入随机删除某些词，随机调换某些词的顺序 回译将中文翻译成英文再翻译回中文 半监督方法半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法 Pseudo label（伪标签） 将有标签部分数据分为两份：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习调参经验">
-<meta property="og:url" content="http://yoursite.com/2020/06/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B0%83%E5%8F%82%E7%BB%8F%E9%AA%8C/index.html">
+<meta property="og:title" content="NLP中的文本增强">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/index.html">
 <meta property="og:site_name" content="小二郎">
-<meta property="og:description" content="深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。 学习率从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。 BatchSize一般就12">
+<meta property="og:description" content="实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。 词语替换对特定的词语或者短语进行同义词替换，可使用同义词典替换 噪音注入随机删除某些词，随机调换某些词的顺序 回译将中文翻译成英文再翻译回中文 半监督方法半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法 Pseudo label（伪标签） 将有标签部分数据分为两份：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-04T14:11:42.000Z">
-<meta property="article:modified_time" content="2020-06-05T02:00:58.883Z">
+<meta property="article:published_time" content="2020-06-09T06:58:29.000Z">
+<meta property="article:modified_time" content="2020-06-09T07:12:01.433Z">
 <meta property="article:author" content="chen shuai">
-<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/04/深度学习调参经验/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/09/NLP中的文本增强/"/>
 
 
 
 
 
-  <title>深度学习调参经验 | 小二郎</title>
+  <title>NLP中的文本增强 | 小二郎</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B0%83%E5%8F%82%E7%BB%8F%E9%AA%8C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen shuai">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深度学习调参经验</h1>
+          <h1 class="post-title" itemprop="name headline">NLP中的文本增强</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-04T22:11:42+08:00">
-                2020-06-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T14:58:29+08:00">
+                2020-06-09
               </time>
             
 
@@ -320,17 +320,17 @@
       
 
       
-        <p>深度学习调参主要就是基本的超参数，如学习率、batchsize这些，还有网络的结构参数，如embedding维度、LSTM维度。</p>
-<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3><p>从小到大，不同的量级依次提高，[0.1,0.01,0.001…….]。还有模型后期的学习率衰减。如果使用预训练词向量的话，可以对embedding层设置一个较小的学习率。以一个学习率训练完整个模型，可以再已较低的学习率重新进一步训练。</p>
-<h3 id="BatchSize"><a href="#BatchSize" class="headerlink" title="BatchSize"></a>BatchSize</h3><p>一般就128，256没啥好说的</p>
-<h3 id="checkpoint融合"><a href="#checkpoint融合" class="headerlink" title="checkpoint融合"></a>checkpoint融合</h3><p>和Transformer学的骚操作，可以对最后5轮的checkpoint做一个平均，当作模型最后训练的参数值</p>
-<h3 id="loss震荡"><a href="#loss震荡" class="headerlink" title="loss震荡"></a>loss震荡</h3><p>三种可能原因</p>
-<ol>
-<li>数据本身有问题</li>
-<li>lr学习率过大，导致无法找到好的极值点</li>
-<li>batchsize过小</li>
-</ol>
-<h3 id="对于结构的维度"><a href="#对于结构的维度" class="headerlink" title="对于结构的维度"></a>对于结构的维度</h3><p>我习惯从小到大，依次提高。比如lstm维度，从100逐步增加到300或者400</p>
+        <p>实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。</p>
+<h2 id="词语替换"><a href="#词语替换" class="headerlink" title="词语替换"></a>词语替换</h2><p>对特定的词语或者短语进行同义词替换，可使用同义词典替换</p>
+<h2 id="噪音注入"><a href="#噪音注入" class="headerlink" title="噪音注入"></a>噪音注入</h2><p>随机删除某些词，随机调换某些词的顺序</p>
+<h2 id="回译"><a href="#回译" class="headerlink" title="回译"></a>回译</h2><p>将中文翻译成英文再翻译回中文</p>
+<h2 id="半监督方法"><a href="#半监督方法" class="headerlink" title="半监督方法"></a>半监督方法</h2><p>半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法</p>
+<h3 id="Pseudo-label（伪标签）"><a href="#Pseudo-label（伪标签）" class="headerlink" title="Pseudo label（伪标签）"></a>Pseudo label（伪标签）</h3><ul>
+<li>将有标签部分数据分为两份：train_set&amp;validation_set，并训练出最优的model1</li>
+<li>用model1对未知标签数据(test_set)进行预测，给出伪标签结果pseudo-labeled</li>
+<li>将train_set中抽取一部分做新的validation_set，把剩余部分与pseudo-labeled部分融合作为新的train_set，训练出最优的model2</li>
+<li>再用model2对未知标签数据(test_set)进行预测，得到最终的final result label</li>
+</ul>
 
       
     </div>
@@ -348,7 +348,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
           
         </div>
       
@@ -361,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/04/unsupervised-domain-adaptation-of-contextualized-embedding-for-sequence-labeling/" rel="next" title="unsupervised domain adaptation of contextualized embedding for sequence labeling">
-                <i class="fa fa-chevron-left"></i> unsupervised domain adaptation of contextualized embedding for sequence labeling
+              <a href="/2020/06/08/SQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="next" title="SQL基本概念">
+                <i class="fa fa-chevron-left"></i> SQL基本概念
               </a>
             
           </div>
@@ -370,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/07/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" rel="prev" title="机器学习常见问题">
-                机器学习常见问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习率"><span class="nav-number">1.</span> <span class="nav-text">学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BatchSize"><span class="nav-number">2.</span> <span class="nav-text">BatchSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkpoint融合"><span class="nav-number">3.</span> <span class="nav-text">checkpoint融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss震荡"><span class="nav-number">4.</span> <span class="nav-text">loss震荡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于结构的维度"><span class="nav-number">5.</span> <span class="nav-text">对于结构的维度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词语替换"><span class="nav-number">1.</span> <span class="nav-text">词语替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#噪音注入"><span class="nav-number">2.</span> <span class="nav-text">噪音注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回译"><span class="nav-number">3.</span> <span class="nav-text">回译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半监督方法"><span class="nav-number">4.</span> <span class="nav-text">半监督方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudo-label（伪标签）"><span class="nav-number">4.1.</span> <span class="nav-text">Pseudo label（伪标签）</span></a></li></ol></li></ol></div>
             
 
           </div>
