@@ -126,7 +126,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf05ggwkraj313c0m4436.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf05fyfkx8j312m07sdhf.jpg">
 <meta property="article:published_time" content="2020-06-07T04:47:01.000Z">
-<meta property="article:modified_time" content="2020-06-07T04:50:08.667Z">
+<meta property="article:modified_time" content="2020-06-11T08:21:02.413Z">
 <meta property="article:author" content="chen shuai">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -366,7 +366,7 @@
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcpsw3i3qij31920i2q8l.jpg" alt="image-20200311105517763"></p>
 <h4 id="2-什么是回归，什么是分类"><a href="#2-什么是回归，什么是分类" class="headerlink" title="2. 什么是回归，什么是分类"></a>2. 什么是回归，什么是分类</h4><p>分类问题就是预测值y是一个离散有限的变量，通过数据学习一个决策函数，将未知数据预测到对应类别</p>
 <p>回归问题就是待预测的y值是一个连续的变量</p>
-<h4 id="3-最大似然估计"><a href="#3-最大似然估计" class="headerlink" title="3. 最大似然估计"></a>3. 最大似然估计</h4><p>似然函数：p(data|theta)，不同的theta下data的概率</p>
+<h4 id="3-最大似然估计"><a href="#3-最大似然估计" class="headerlink" title="3. 最大似然估计"></a>3. 最大似然估计</h4><p>似然函数：p(data|theta)，给定参数theta(值未知)下data发生的概率</p>
 <p>参数固定，只是不知道值，现在通过给定的一组观察结果，写出观测样本的似然函数，最大化似然函数，求这个参数使得出现这组观察结果概率最大</p>
 <h4 id="4-最大后验估计"><a href="#4-最大后验估计" class="headerlink" title="4. 最大后验估计"></a>4. 最大后验估计</h4><p>最大后验估计就是假定这个参数应该符合一定的先验分布，并不是一个值，是一个概率分布。通过贝叶斯公式可以写出后验概率的计算，与似然和先验概率有关，所以最大后验估计是不仅要保证似然大，还要保证先验概率也大。相当于加了一个约束项。</p>
 <h4 id="5-贝叶斯估计"><a href="#5-贝叶斯估计" class="headerlink" title="5. 贝叶斯估计"></a>5. 贝叶斯估计</h4><p>跟最大后验估计很像，不过最后求的是参数的分布，而不是具体的值</p>
@@ -535,15 +535,15 @@
 <p>可以从公示看出来，这里的概率是全局归一化的概率，所以得到的解是全局的最优解</p>
 <ol>
 <li>HMM是有向图模型，CRF是无向图模型</li>
-<li>HMM是生成式模型，需要用到先验概率，是计算一个联合概率；CRF是判别式模型，是直接对条件概率进行建模</li>
-<li>HMM的两个假设：HMM的某个时刻的隐状态只与前一个状态有关，观测状态只与当前隐状态有关，也就是转移概率和发射概率，所以HMM在做标注问题时不能很好的考虑全局的上下文信息；而对CRF来说，摒弃了这两个假设，所以CRF相比HMM可以更好的利用上下文信息。</li>
-<li>两者的预测问题都是用维特比算法去解码，就是个动态规划</li>
+<li>HMM是生成式模型，是计算一个联合概率，最后来求解条件概率；CRF是判别式模型，是直接对条件概率进行建模</li>
+<li>HMM由于有观测独立性假设，所以HMM在做标注问题时不能很好的考虑全局的上下文信息；而对CRF来说，抛弃了这个假设，可以通过特征函数捕捉一个上下文信息，所以CRF相比HMM可以更好的利用上下文信息。</li>
+<li>CRF最后计算的概率是基于所有可能的序列归一化进行计算的，所以得到的解是全局最优解。</li>
 <li>对于参数学习问题，HMM是学习初始概率、转移概率矩阵、发射概率矩阵，这个可以用极大似然估计，也就是从训练数据中去统计；也可以用EM算法去估计参数。对于CRF来说就是学习各个特征函数的权重，这个也是极大似然函数，但是没法统计，最后是要用梯度下降去求解的</li>
 <li>在tensorflow里bisltm+crf，bilstm输出的每个token的logits相当于提供的是一个状态函数得分，然后还有一个要学的转移矩阵的参数，这个就是转移函数</li>
 <li>CRF++里面是人为定义特征函数模版，包括转移函数、状态函数，然后模型去学习函数前的权重。</li>
 </ol>
-<h3 id="CRF模型实现细节"><a href="#CRF模型实现细节" class="headerlink" title="CRF模型实现细节"></a>CRF模型实现细节</h3><p>目标肯定是最大化条件概率，条件概率的计算包括两步，第一步就是这条序列的得分，第二步就是归一化因子Z</p>
-<p>第一步的得分就是算出每个标签的打分，打分是两个组成，一个是特征状态函数得分，这个是bilstm输出的logits；第二个组成是转移函数得分，这个是待学习的参数。</p>
+<h3 id="CRF模型实现细节"><a href="#CRF模型实现细节" class="headerlink" title="CRF模型实现细节"></a>CRF模型实现细节</h3><p>目标肯定是最大化似然函数，计算包括两步，第一步就是这条序列的得分，第二步就是归一化因子Z，损失函数就是负对数似然。</p>
+<p>第一步的得分就是算出每个标签的打分，打分是两个组成，一个是特征状态函数得分，这个是bilstm输出的logits；第二个组成是转移函数得分，这个是待学习的参数。状态函数得分和转移函数得分相加就是这条序列的得分。</p>
 <p>第二步的归一化因子Z比较难求，见下图</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf05ggwkraj313c0m4436.jpg" alt="image-20200521162621064"></p>
 <p>然后加个log函数，把除变成减</p>
@@ -676,7 +676,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

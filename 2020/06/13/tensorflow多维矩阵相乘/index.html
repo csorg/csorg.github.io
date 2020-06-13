@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NLP," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,19 @@
 
 
 
-<meta name="description" content="实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。 词语替换对特定的词语或者短语进行同义词替换，可使用同义词典替换 噪音注入随机删除某些词，随机调换某些词的顺序 回译将中文翻译成英文再翻译回中文 半监督方法半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法 Pseudo label（伪标签） 将有标签部分数据分为两份：">
+<meta name="description" content="矩阵乘法一般都是针对的二维矩阵，但是在实际应用中有时会遇到多维矩阵相乘的情况，比如计算Attention的时候，那么tensorflow内部是如何处理多维矩阵相乘的呢？ 首先看一个示例：  在tensorflow内部针对多维矩阵相乘，进行的都是batch_mat_mul，matmul针对的是每个batch的切片，也就还是二维矩阵相乘。所以进行多维矩阵相乘的时候，要保证除了最后两维，其他的维度要一一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NLP中的文本增强">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/index.html">
+<meta property="og:title" content="tensorflow多维矩阵相乘">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/tensorflow%E5%A4%9A%E7%BB%B4%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/index.html">
 <meta property="og:site_name" content="小二郎">
-<meta property="og:description" content="实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。 词语替换对特定的词语或者短语进行同义词替换，可使用同义词典替换 噪音注入随机删除某些词，随机调换某些词的顺序 回译将中文翻译成英文再翻译回中文 半监督方法半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法 Pseudo label（伪标签） 将有标签部分数据分为两份：">
+<meta property="og:description" content="矩阵乘法一般都是针对的二维矩阵，但是在实际应用中有时会遇到多维矩阵相乘的情况，比如计算Attention的时候，那么tensorflow内部是如何处理多维矩阵相乘的呢？ 首先看一个示例：  在tensorflow内部针对多维矩阵相乘，进行的都是batch_mat_mul，matmul针对的是每个batch的切片，也就还是二维矩阵相乘。所以进行多维矩阵相乘的时候，要保证除了最后两维，其他的维度要一一">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-09T06:58:29.000Z">
-<meta property="article:modified_time" content="2020-06-09T07:12:01.433Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfqt31vmtlj308p04xt8t.jpg">
+<meta property="article:published_time" content="2020-06-13T09:46:41.000Z">
+<meta property="article:modified_time" content="2020-06-13T09:51:27.786Z">
 <meta property="article:author" content="chen shuai">
-<meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfqt31vmtlj308p04xt8t.jpg">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/09/NLP中的文本增强/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/13/tensorflow多维矩阵相乘/"/>
 
 
 
 
 
-  <title>NLP中的文本增强 | 小二郎</title>
+  <title>tensorflow多维矩阵相乘 | 小二郎</title>
   
 
 
@@ -253,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/tensorflow%E5%A4%9A%E7%BB%B4%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen shuai">
@@ -270,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NLP中的文本增强</h1>
+          <h1 class="post-title" itemprop="name headline">tensorflow多维矩阵相乘</h1>
         
 
         <div class="post-meta">
@@ -282,8 +283,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T14:58:29+08:00">
-                2020-06-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-13T17:46:41+08:00">
+                2020-06-13
               </time>
             
 
@@ -320,17 +321,10 @@
       
 
       
-        <p>实际应用中，有时候会遇到数据集数量过少的情况，对此可以采用文本增强的方法，增加数据集的数量，从而提高后续的模型性能。</p>
-<h2 id="词语替换"><a href="#词语替换" class="headerlink" title="词语替换"></a>词语替换</h2><p>对特定的词语或者短语进行同义词替换，可使用同义词典替换</p>
-<h2 id="噪音注入"><a href="#噪音注入" class="headerlink" title="噪音注入"></a>噪音注入</h2><p>随机删除某些词，随机调换某些词的顺序</p>
-<h2 id="回译"><a href="#回译" class="headerlink" title="回译"></a>回译</h2><p>将中文翻译成英文再翻译回中文</p>
-<h2 id="半监督方法"><a href="#半监督方法" class="headerlink" title="半监督方法"></a>半监督方法</h2><p>半监督学习是一种同时利用有标签数据和无标签数据进行学习的一种方法</p>
-<h3 id="Pseudo-label（伪标签）"><a href="#Pseudo-label（伪标签）" class="headerlink" title="Pseudo label（伪标签）"></a>Pseudo label（伪标签）</h3><ul>
-<li>将有标签部分数据分为两份：train_set&amp;validation_set，并训练出最优的model1</li>
-<li>用model1对未知标签数据(test_set)进行预测，给出伪标签结果pseudo-labeled</li>
-<li>将train_set中抽取一部分做新的validation_set，把剩余部分与pseudo-labeled部分融合作为新的train_set，训练出最优的model2</li>
-<li>再用model2对未知标签数据(test_set)进行预测，得到最终的final result label</li>
-</ul>
+        <p>矩阵乘法一般都是针对的二维矩阵，但是在实际应用中有时会遇到多维矩阵相乘的情况，比如计算Attention的时候，那么tensorflow内部是如何处理多维矩阵相乘的呢？</p>
+<p>首先看一个示例：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfqt31vmtlj308p04xt8t.jpg" alt="image-20200613174832284"></p>
+<p>在tensorflow内部针对多维矩阵相乘，进行的都是batch_mat_mul，matmul针对的是每个batch的切片，也就还是二维矩阵相乘。所以进行多维矩阵相乘的时候，要保证除了最后两维，其他的维度要一一对应相等。最后两个维度要满足数学上矩阵相乘的要求。</p>
 
       
     </div>
@@ -346,12 +340,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/NLP/" rel="tag"># NLP</a>
-          
-        </div>
-      
 
       
       
@@ -361,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/08/SQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="next" title="SQL基本概念">
-                <i class="fa fa-chevron-left"></i> SQL基本概念
+              <a href="/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/" rel="next" title="NLP中的文本增强">
+                <i class="fa fa-chevron-left"></i> NLP中的文本增强
               </a>
             
           </div>
@@ -370,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/13/tensorflow%E5%A4%9A%E7%BB%B4%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/" rel="prev" title="tensorflow多维矩阵相乘">
-                tensorflow多维矩阵相乘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,17 +409,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -486,22 +461,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词语替换"><span class="nav-number">1.</span> <span class="nav-text">词语替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#噪音注入"><span class="nav-number">2.</span> <span class="nav-text">噪音注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回译"><span class="nav-number">3.</span> <span class="nav-text">回译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半监督方法"><span class="nav-number">4.</span> <span class="nav-text">半监督方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudo-label（伪标签）"><span class="nav-number">4.1.</span> <span class="nav-text">Pseudo label（伪标签）</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

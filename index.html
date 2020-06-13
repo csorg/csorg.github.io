@@ -249,6 +249,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/tensorflow%E5%A4%9A%E7%BB%B4%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小二郎">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/13/tensorflow%E5%A4%9A%E7%BB%B4%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/" itemprop="url">tensorflow多维矩阵相乘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-13T17:46:41+08:00">
+                2020-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>矩阵乘法一般都是针对的二维矩阵，但是在实际应用中有时会遇到多维矩阵相乘的情况，比如计算Attention的时候，那么tensorflow内部是如何处理多维矩阵相乘的呢？</p>
+<p>首先看一个示例：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfqt31vmtlj308p04xt8t.jpg" alt="image-20200613174832284"></p>
+<p>在tensorflow内部针对多维矩阵相乘，进行的都是batch_mat_mul，matmul针对的是每个batch的切片，也就还是二维矩阵相乘。所以进行多维矩阵相乘的时候，要保证除了最后两维，其他的维度要一一对应相等。最后两个维度要满足数学上矩阵相乘的要求。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/NLP%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%A2%9E%E5%BC%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -591,7 +714,7 @@
 <h5 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h5><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcr4swg8psj30j607wjry.jpg" alt="image-20200312143259002" style="zoom:33%;" />
 
 <p>带冲量的梯度下降。它的动机就是说保存历史累计梯度，其实就是对历史累计梯度做了一个加权和，称作冲量。然后计算当前时刻的梯度，如果与冲量方向一致，那么就是叠加进去，如果相反，冲量也会减少。这种优化器的好处也显而易见，考虑了历史累计梯度，可以避免模型在某个时刻过于震荡，从而加速模型的训练。</p>
-<h5 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h5><p>是RMSProp前一个版本，让学习率衰减，让学习率除以历史累积的梯度平方和在开根</p>
+<h5 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h5><p>是RMSProp前一个版本，让学习率衰减，让学习率除以历史累积的梯度平方和的开根</p>
 <h5 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h5><p>梯度的问题解决了，那么学习率是不是有更好的办法让它能够自适应的改变呢</p>
 <p>是Adagrad改进版，adagrad训练到一定程度，学习率太小了，不太靠谱。所以采用指数衰减的策略，只考虑最近的梯度</p>
 <p>可以看到，s是关于梯度的，如果梯度太大，那么也就是s很大，用alpha去除，那么alpha就会降低，相当于防止过度抖动</p>
@@ -701,9 +824,9 @@
 <p>ELECTRA就是预测一个token是否被替换</p>
 <p>XLNET将自回归语言模型和双向语言模型结合，具体方式就是排列输入的顺序，使得看到的上文信息有下文的信息</p>
 <h4 id="我认为未来的优化方向"><a href="#我认为未来的优化方向" class="headerlink" title="我认为未来的优化方向"></a>我认为未来的优化方向</h4><p>分为三个阶段，第一个阶段就是大规模同样语料的预训练，第二阶段就是在特定领域引入知识表示，最后一阶段才是在该领域的任务上进行fine-tune</p>
-<h4 id="ELMO-GPT-BERT对比"><a href="#ELMO-GPT-BERT对比" class="headerlink" title="ELMO GPT BERT对比"></a>ELMO GPT BERT对比</h4><p>ELMO主要是三层，第一层也就是输入层，采用就是word embedding作为输入，然后另外两层是双向lstm，分别是做一个前向语言模型，和后向语言模型，然后来训练语言模型。最后针对下游任务的时候可以将三层embedding加权叠加，这样的话其实就相当于做了一个动态的word embedding</p>
-<p>GPT是单向语言模型，他是使用transformer来作为编码器，根据之前的单词来预测下一个</p>
-<p>BERT改进了gpt使用了双向语言模型的思想，使用上下文来预测当前的单词。</p>
+<h4 id="ELMO-GPT-BERT对比"><a href="#ELMO-GPT-BERT对比" class="headerlink" title="ELMO GPT BERT对比"></a>ELMO GPT BERT对比</h4><p>ELMO主要是三层，第一层也就是输入层，采用就是word embedding作为输入，然后另外两层是双向lstm，分别是做一个前向语言模型，和后向语言模型，最大化前向和后向的概率和，然后来训练语言模型。最后针对下游任务的时候可以将三层embedding加权叠加，这样的话其实就相当于做了一个动态的word embedding</p>
+<p>GPT是单向自回归语言模型，他是使用transformer 的decoder模块(去掉encoder-decoder之间的attention)来作为编码器，这样的话就可以利用之前的信息来预测下一个单词</p>
+<p>BERT改进了gpt，通过自编码的思想，实现了双向语言模型的目的，使用上下文来预测当前的单词。</p>
 <h3 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h3><p>word2vec是一种将词映射到一个低纬稠密向量空间的方法，也就是词嵌入。它主要包含两种，CBOW和skip-gram，CBOW就是扣掉某词，用上下文来预测它。skip-gram相反。</p>
 <p>word2vec有两种优化方式，第一种叫层次softmax，第二种是负采样。</p>
 <h4 id="层次softmax"><a href="#层次softmax" class="headerlink" title="层次softmax"></a>层次softmax</h4><p>首先根据训练语料的词典构建霍夫曼树，这样的话高频词就处在较前面的位置。霍夫曼树的根节点是隐藏层的输出向量，然后使用逻辑回归计算概率。每个非叶子节点都是一个向量。就是本来的隐藏层到输出层这个矩阵参数变成了非叶子结点。为什么使用层次softmax呢，因为普通的softmax要对整个词典去计算概率，然后取最大的那个词，这样太耗费资源。而使用霍夫曼树，因为我训练是知道他的target word的，所以我可以快速找到这个词，也就是霍夫曼树的某个节点，然霍夫曼树每条路径其实都是概率的连乘，这样我们就可以最大化那个目标词的概率就好了。</p>
@@ -879,7 +1002,7 @@
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcpsw3i3qij31920i2q8l.jpg" alt="image-20200311105517763"></p>
 <h4 id="2-什么是回归，什么是分类"><a href="#2-什么是回归，什么是分类" class="headerlink" title="2. 什么是回归，什么是分类"></a>2. 什么是回归，什么是分类</h4><p>分类问题就是预测值y是一个离散有限的变量，通过数据学习一个决策函数，将未知数据预测到对应类别</p>
 <p>回归问题就是待预测的y值是一个连续的变量</p>
-<h4 id="3-最大似然估计"><a href="#3-最大似然估计" class="headerlink" title="3. 最大似然估计"></a>3. 最大似然估计</h4><p>似然函数：p(data|theta)，不同的theta下data的概率</p>
+<h4 id="3-最大似然估计"><a href="#3-最大似然估计" class="headerlink" title="3. 最大似然估计"></a>3. 最大似然估计</h4><p>似然函数：p(data|theta)，给定参数theta(值未知)下data发生的概率</p>
 <p>参数固定，只是不知道值，现在通过给定的一组观察结果，写出观测样本的似然函数，最大化似然函数，求这个参数使得出现这组观察结果概率最大</p>
 <h4 id="4-最大后验估计"><a href="#4-最大后验估计" class="headerlink" title="4. 最大后验估计"></a>4. 最大后验估计</h4><p>最大后验估计就是假定这个参数应该符合一定的先验分布，并不是一个值，是一个概率分布。通过贝叶斯公式可以写出后验概率的计算，与似然和先验概率有关，所以最大后验估计是不仅要保证似然大，还要保证先验概率也大。相当于加了一个约束项。</p>
 <h4 id="5-贝叶斯估计"><a href="#5-贝叶斯估计" class="headerlink" title="5. 贝叶斯估计"></a>5. 贝叶斯估计</h4><p>跟最大后验估计很像，不过最后求的是参数的分布，而不是具体的值</p>
@@ -1048,15 +1171,15 @@
 <p>可以从公示看出来，这里的概率是全局归一化的概率，所以得到的解是全局的最优解</p>
 <ol>
 <li>HMM是有向图模型，CRF是无向图模型</li>
-<li>HMM是生成式模型，需要用到先验概率，是计算一个联合概率；CRF是判别式模型，是直接对条件概率进行建模</li>
-<li>HMM的两个假设：HMM的某个时刻的隐状态只与前一个状态有关，观测状态只与当前隐状态有关，也就是转移概率和发射概率，所以HMM在做标注问题时不能很好的考虑全局的上下文信息；而对CRF来说，摒弃了这两个假设，所以CRF相比HMM可以更好的利用上下文信息。</li>
-<li>两者的预测问题都是用维特比算法去解码，就是个动态规划</li>
+<li>HMM是生成式模型，是计算一个联合概率，最后来求解条件概率；CRF是判别式模型，是直接对条件概率进行建模</li>
+<li>HMM由于有观测独立性假设，所以HMM在做标注问题时不能很好的考虑全局的上下文信息；而对CRF来说，抛弃了这个假设，可以通过特征函数捕捉一个上下文信息，所以CRF相比HMM可以更好的利用上下文信息。</li>
+<li>CRF最后计算的概率是基于所有可能的序列归一化进行计算的，所以得到的解是全局最优解。</li>
 <li>对于参数学习问题，HMM是学习初始概率、转移概率矩阵、发射概率矩阵，这个可以用极大似然估计，也就是从训练数据中去统计；也可以用EM算法去估计参数。对于CRF来说就是学习各个特征函数的权重，这个也是极大似然函数，但是没法统计，最后是要用梯度下降去求解的</li>
 <li>在tensorflow里bisltm+crf，bilstm输出的每个token的logits相当于提供的是一个状态函数得分，然后还有一个要学的转移矩阵的参数，这个就是转移函数</li>
 <li>CRF++里面是人为定义特征函数模版，包括转移函数、状态函数，然后模型去学习函数前的权重。</li>
 </ol>
-<h3 id="CRF模型实现细节"><a href="#CRF模型实现细节" class="headerlink" title="CRF模型实现细节"></a>CRF模型实现细节</h3><p>目标肯定是最大化条件概率，条件概率的计算包括两步，第一步就是这条序列的得分，第二步就是归一化因子Z</p>
-<p>第一步的得分就是算出每个标签的打分，打分是两个组成，一个是特征状态函数得分，这个是bilstm输出的logits；第二个组成是转移函数得分，这个是待学习的参数。</p>
+<h3 id="CRF模型实现细节"><a href="#CRF模型实现细节" class="headerlink" title="CRF模型实现细节"></a>CRF模型实现细节</h3><p>目标肯定是最大化似然函数，计算包括两步，第一步就是这条序列的得分，第二步就是归一化因子Z，损失函数就是负对数似然。</p>
+<p>第一步的得分就是算出每个标签的打分，打分是两个组成，一个是特征状态函数得分，这个是bilstm输出的logits；第二个组成是转移函数得分，这个是待学习的参数。状态函数得分和转移函数得分相加就是这条序列的得分。</p>
 <p>第二步的归一化因子Z比较难求，见下图</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf05ggwkraj313c0m4436.jpg" alt="image-20200521162621064"></p>
 <p>然后加个log函数，把除变成减</p>
@@ -1408,7 +1531,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

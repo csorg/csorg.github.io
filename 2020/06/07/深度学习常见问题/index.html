@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdrx95mufrj31ds0f4div.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdrx9i1e5wj30ni03kaa7.jpg">
 <meta property="article:published_time" content="2020-06-07T04:50:33.000Z">
-<meta property="article:modified_time" content="2020-06-08T05:46:29.841Z">
+<meta property="article:modified_time" content="2020-06-12T03:44:14.669Z">
 <meta property="article:author" content="chen shuai">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -371,7 +371,7 @@
 <h5 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h5><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcr4swg8psj30j607wjry.jpg" alt="image-20200312143259002" style="zoom:33%;" />
 
 <p>带冲量的梯度下降。它的动机就是说保存历史累计梯度，其实就是对历史累计梯度做了一个加权和，称作冲量。然后计算当前时刻的梯度，如果与冲量方向一致，那么就是叠加进去，如果相反，冲量也会减少。这种优化器的好处也显而易见，考虑了历史累计梯度，可以避免模型在某个时刻过于震荡，从而加速模型的训练。</p>
-<h5 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h5><p>是RMSProp前一个版本，让学习率衰减，让学习率除以历史累积的梯度平方和在开根</p>
+<h5 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h5><p>是RMSProp前一个版本，让学习率衰减，让学习率除以历史累积的梯度平方和的开根</p>
 <h5 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h5><p>梯度的问题解决了，那么学习率是不是有更好的办法让它能够自适应的改变呢</p>
 <p>是Adagrad改进版，adagrad训练到一定程度，学习率太小了，不太靠谱。所以采用指数衰减的策略，只考虑最近的梯度</p>
 <p>可以看到，s是关于梯度的，如果梯度太大，那么也就是s很大，用alpha去除，那么alpha就会降低，相当于防止过度抖动</p>
@@ -481,9 +481,9 @@
 <p>ELECTRA就是预测一个token是否被替换</p>
 <p>XLNET将自回归语言模型和双向语言模型结合，具体方式就是排列输入的顺序，使得看到的上文信息有下文的信息</p>
 <h4 id="我认为未来的优化方向"><a href="#我认为未来的优化方向" class="headerlink" title="我认为未来的优化方向"></a>我认为未来的优化方向</h4><p>分为三个阶段，第一个阶段就是大规模同样语料的预训练，第二阶段就是在特定领域引入知识表示，最后一阶段才是在该领域的任务上进行fine-tune</p>
-<h4 id="ELMO-GPT-BERT对比"><a href="#ELMO-GPT-BERT对比" class="headerlink" title="ELMO GPT BERT对比"></a>ELMO GPT BERT对比</h4><p>ELMO主要是三层，第一层也就是输入层，采用就是word embedding作为输入，然后另外两层是双向lstm，分别是做一个前向语言模型，和后向语言模型，然后来训练语言模型。最后针对下游任务的时候可以将三层embedding加权叠加，这样的话其实就相当于做了一个动态的word embedding</p>
-<p>GPT是单向语言模型，他是使用transformer来作为编码器，根据之前的单词来预测下一个</p>
-<p>BERT改进了gpt使用了双向语言模型的思想，使用上下文来预测当前的单词。</p>
+<h4 id="ELMO-GPT-BERT对比"><a href="#ELMO-GPT-BERT对比" class="headerlink" title="ELMO GPT BERT对比"></a>ELMO GPT BERT对比</h4><p>ELMO主要是三层，第一层也就是输入层，采用就是word embedding作为输入，然后另外两层是双向lstm，分别是做一个前向语言模型，和后向语言模型，最大化前向和后向的概率和，然后来训练语言模型。最后针对下游任务的时候可以将三层embedding加权叠加，这样的话其实就相当于做了一个动态的word embedding</p>
+<p>GPT是单向自回归语言模型，他是使用transformer 的decoder模块(去掉encoder-decoder之间的attention)来作为编码器，这样的话就可以利用之前的信息来预测下一个单词</p>
+<p>BERT改进了gpt，通过自编码的思想，实现了双向语言模型的目的，使用上下文来预测当前的单词。</p>
 <h3 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h3><p>word2vec是一种将词映射到一个低纬稠密向量空间的方法，也就是词嵌入。它主要包含两种，CBOW和skip-gram，CBOW就是扣掉某词，用上下文来预测它。skip-gram相反。</p>
 <p>word2vec有两种优化方式，第一种叫层次softmax，第二种是负采样。</p>
 <h4 id="层次softmax"><a href="#层次softmax" class="headerlink" title="层次softmax"></a>层次softmax</h4><p>首先根据训练语料的词典构建霍夫曼树，这样的话高频词就处在较前面的位置。霍夫曼树的根节点是隐藏层的输出向量，然后使用逻辑回归计算概率。每个非叶子节点都是一个向量。就是本来的隐藏层到输出层这个矩阵参数变成了非叶子结点。为什么使用层次softmax呢，因为普通的softmax要对整个词典去计算概率，然后取最大的那个词，这样太耗费资源。而使用霍夫曼树，因为我训练是知道他的target word的，所以我可以快速找到这个词，也就是霍夫曼树的某个节点，然霍夫曼树每条路径其实都是概率的连乘，这样我们就可以最大化那个目标词的概率就好了。</p>
@@ -653,7 +653,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
