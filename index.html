@@ -249,6 +249,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/spark-dataframe%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小二郎">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/20/spark-dataframe%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" itemprop="url">spark dataframe常用操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-20T20:00:42+08:00">
+                2020-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/vivo-hr%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -476,7 +595,7 @@
 <li>B收到后，连接建立</li>
 </ul>
 <p>第三次握手是为了防止无效的连接请求到达服务器，然后错误的建立连接。</p>
-<p>TCP四次握手，A为客户端，B为服务器端</p>
+<p>TCP四次挥手，A为客户端，B为服务器端</p>
 <ul>
 <li>A发送连接释放报文</li>
 <li>B收到后发出确认，但此时TCP是半关闭状态，只能B向A发送数据</li>
@@ -517,7 +636,12 @@
 <h3 id="计算机操作系统"><a href="#计算机操作系统" class="headerlink" title="计算机操作系统"></a>计算机操作系统</h3><p>进程和线程区别？</p>
 <p>线程是cpu独立调度和分配的基本单位，进程是资源分配的基本单位，但是线程不拥有资源，线程可以访问隶属进程的资源。进程可以看作是一个程序，一个程序可以运行多个子任务，这个子任务就是线程</p>
 <p>通信方面：线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC。</p>
-<h3 id="python语言基础"><a href="#python语言基础" class="headerlink" title="python语言基础"></a>python语言基础</h3><h4 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h4><p>浅拷贝是拷贝父对象，但是子对象没有拷贝下来，比如列表里的元素有一个是列表，那么里面的列表是子对象，拷贝下来更改子对象，原数据的子对象也会跟着更改</p>
+<h4 id="子进程、父进程、僵尸进程、孤儿进程"><a href="#子进程、父进程、僵尸进程、孤儿进程" class="headerlink" title="子进程、父进程、僵尸进程、孤儿进程"></a>子进程、父进程、僵尸进程、孤儿进程</h4><p>通过fork创建进程的这个进程是父进程，被创建的这个进程就是子进程</p>
+<p>一般来说子进程运行结束后会发一个信号给父进程，父进程收到后会通知系统清理掉子进程的内存，但是如果没这么做，子进程一直存在成了僵尸进程</p>
+<p>孤儿进程就是父进程结束后还在运行的子进程</p>
+<h3 id="python语言基础"><a href="#python语言基础" class="headerlink" title="python语言基础"></a>python语言基础</h3><h4 id="多线程、多进程"><a href="#多线程、多进程" class="headerlink" title="多线程、多进程"></a>多线程、多进程</h4><p>python由于GIL的存在，只能运行一个线程。适合爬虫这种io密集型的任务</p>
+<p>要并行的话，使用multiprocessing模块，适合计算密集型的任务</p>
+<h4 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h4><p>浅拷贝是拷贝父对象，但是子对象没有拷贝下来，比如列表里的元素有一个是列表，那么里面的列表是子对象，拷贝下来更改子对象，原数据的子对象也会跟着更改</p>
 <p>深拷贝就是全拷贝下来</p>
 <h4 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h4><p>支持迭代器协议就是实现对象的<strong>iter</strong>()和next()方法。其中<strong>iter</strong>()方法返回迭代器对象本身；next()方法返回容器的下一个元素，在结尾时引发StopIteration异常。</p>
 <p>生成器使用yield关键字实现，这个就相当于是一个return 不过每次运行到这return后，下一次在调用会继续接着上次的状态运行</p>
@@ -1174,19 +1298,28 @@
 </ul>
 <h3 id="为什么神经网络初始权重不能为0"><a href="#为什么神经网络初始权重不能为0" class="headerlink" title="为什么神经网络初始权重不能为0"></a>为什么神经网络初始权重不能为0</h3><p>如果为0，会导致后续隐藏层的所有神经元的值都是一样的，然后梯度下降的时候，梯度改变值也是一样的，那么就会造成神经元不能学习不同的特征。</p>
 <h3 id="过拟合及优化专项"><a href="#过拟合及优化专项" class="headerlink" title="过拟合及优化专项"></a>过拟合及优化专项</h3><h4 id="什么是过拟合"><a href="#什么是过拟合" class="headerlink" title="什么是过拟合"></a>什么是过拟合</h4><p>当模型在训练集上面性能越来越高，但在测试集上不增反降，这种现象就是过拟合</p>
-<h4 id="过拟合的原因"><a href="#过拟合的原因" class="headerlink" title="过拟合的原因"></a>过拟合的原因</h4><p>模型的解空间过大，而从这有限的数据或者特征来说，无法挑选出一个比较好的模型。所以从这么大的解空间里硬要挑一个模型，是很有可能在训练上表现好但是测试集表现差的。</p>
-<h4 id="如何改善"><a href="#如何改善" class="headerlink" title="如何改善"></a>如何改善</h4><p>最简单的操作，增加数据量</p>
-<p>模型角度呢，其实都可以看作是缩小解空间</p>
+<h4 id="过拟合的原因"><a href="#过拟合的原因" class="headerlink" title="过拟合的原因"></a>过拟合的原因</h4><ul>
+<li>数据量少</li>
+<li>模型复杂</li>
+</ul>
+<h4 id="如何改善"><a href="#如何改善" class="headerlink" title="如何改善"></a>如何改善</h4><p>外部：增加数据量，earlystopping</p>
+<p>内部：dropout，L1、L2正则，batchnormalization，集成模型</p>
+<h4 id="L1、L2正则"><a href="#L1、L2正则" class="headerlink" title="L1、L2正则"></a>L1、L2正则</h4><p>两种解释：1. 公式推导 2.损失值等高线图角度</p>
+<p>按照公式在0处求导，原始的损失函数假设是d，那么加入L2正则后还是d，而加入L1正则会变成d-c和d+c，如果异号，那么0就是极值点，所以容易产生稀疏解</p>
+<p>带正则项和带约束条件是等价的</p>
 <p>为什么L1，L2相当于缩小了解空间呢？</p>
 <img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdmcb61s8dj30u00v41ky.jpg" alt="image-20200408142459145" style="zoom:50%;" />
 
 <p>dropout和batch_normalization查看上文</p>
-<h3 id="Attention总结"><a href="#Attention总结" class="headerlink" title="Attention总结"></a>Attention总结</h3><p>这个网上资料有分类成soft attention(就是常规attention)和hard attention(不可导)，根据计算区域分为global attention (对所有的k计算attention)和 local attention(窗口内部分k做attention)。我自己还是比较倾向于分成两个大类，第一个就是encoder和decoder之间的这种attention，第二类就是自己和自己的attention</p>
+<h3 id="Attention总结"><a href="#Attention总结" class="headerlink" title="Attention总结"></a>Attention总结</h3><p>分为s2s,self-attention,multihead-attention</p>
+<p>这个网上资料有分类成soft attention(就是常规attention)和hard attention(不可导)，根据计算区域分为global attention (对所有的k计算attention)和 local attention(窗口内部分k做attention)。我自己还是比较倾向于分成两个大类，第一个就是encoder和decoder之间的这种attention，第二类就是自己和自己的attention</p>
 <p>attention一开始在NLP里的应用是seq2seq这种结构。原始的做法一般就是encoder把输入编码成一个固定的context，然后交由解码器去解码。但是这种显然是不合理的，解码的每一个状态应该与输入端的不同状态联系是不一样的，所以呢我在解码端就去用隐状态和输入端的每一个状态做一个相似度计算，这里的相似度计算可以用乘性的attention也可以用加性的attention，比如我们这里用点积，计算完相似度后，我们对这个向量进行softmax，相当于是一个权重，然后对输入端计算一个加权和，那么这个context就和解码端的联系就比较紧密了，解码端不同的状态可以关注到不同的输入端信息。</p>
 <p>后来一个就是出来了self-attention，这个就是顾名思义，就是自己和自己做一个attention。比如一个句子，将每个token去和其他的token做一个attention,然后加权求和，这样的话，每个token都相当于与其他的token都形成了联系。这比rnn好的地方就是rnn长距离依赖不行，但是self-attention无视距离关系，所以没有这种缺点。</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdmnkds2cfj30zo0bmq9n.jpg" alt="image-20200408205427460"></p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdmnkuii10j30kw06675i.jpg" alt="image-20200408205457419"></p>
 <h3 id="为什么分类模型用交叉熵损失，回归模型用MSE损失"><a href="#为什么分类模型用交叉熵损失，回归模型用MSE损失" class="headerlink" title="为什么分类模型用交叉熵损失，回归模型用MSE损失"></a>为什么分类模型用交叉熵损失，回归模型用MSE损失</h3><p>首先要知道，分类问题一般是用softmax做激活函数，而这里使用交叉熵作为损失函数一般是要比MSE更能收敛到一个好的极值点的。</p>
+<p>损失函数角度：交叉熵只关注于特定的类别分量，而MSE考虑所有类别</p>
+<p>梯度角度：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdrx95mufrj31ds0f4div.jpg" alt="image-20200413101722976"></p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gdrx9i1e5wj30ni03kaa7.jpg" alt="image-20200413101745367"></p>
 <h3 id="什么是梯度下降"><a href="#什么是梯度下降" class="headerlink" title="什么是梯度下降"></a>什么是梯度下降</h3><p>梯度是一个函数变化最快的方向，而负梯度就是一个函数下降最快的方向，梯度下降法就是每次计算当前函数的负梯度，然后沿着这个方向走，来达到不断减小目标函数的目的</p>
@@ -1386,6 +1519,10 @@
 <p><img src="https://tva1.sinaimg.cn/large/0082zybpgy1gc9t3foz4qj30h607igmp.jpg" alt="image-20200226145321097"></p>
 <p>它的损失函数也可以是交叉熵，就是差了1/m而已</p>
 <h4 id="逻辑回归梯度"><a href="#逻辑回归梯度" class="headerlink" title="逻辑回归梯度"></a>逻辑回归梯度</h4><p>g = (h(x)-y)*x</p>
+<h4 id="逻辑回归的并行实现"><a href="#逻辑回归的并行实现" class="headerlink" title="逻辑回归的并行实现"></a>逻辑回归的并行实现</h4><ul>
+<li>按行并行<br>这个其实就是将样本分到多个机器分别计算，然后求和取平均</li>
+<li>按列并行<br>有的特征纬度达到千万甚至亿级，就可以将特征的不同分量分到不同的机器上面，每个机器只负责一部分特征权重的更新</li>
+</ul>
 <h4 id="逻辑回归可以做多分类吗"><a href="#逻辑回归可以做多分类吗" class="headerlink" title="逻辑回归可以做多分类吗"></a>逻辑回归可以做多分类吗</h4><p>如果多个类别之间不是互斥的关系，那么可以用多个逻辑回归来做多分类，其实就是多标签分类。如果类别之间是互斥的，那么就得用softmax回归。</p>
 <p><img src="https://tva1.sinaimg.cn/large/0082zybpgy1gc9tlq9un1j31ck0kqq5w.jpg" alt="image-20200226151056171"></p>
 <h4 id="逻辑斯蒂回归可以用来处理非线性分类问题吗"><a href="#逻辑斯蒂回归可以用来处理非线性分类问题吗" class="headerlink" title="逻辑斯蒂回归可以用来处理非线性分类问题吗"></a>逻辑斯蒂回归可以用来处理非线性分类问题吗</h4><ol>
@@ -1402,8 +1539,12 @@
 <p>L1正则会产生一个稀疏的解，L2正则会使得参数很小</p>
 <h4 id="逻辑回归为什么用sigmoid函数"><a href="#逻辑回归为什么用sigmoid函数" class="headerlink" title="逻辑回归为什么用sigmoid函数"></a>逻辑回归为什么用sigmoid函数</h4><p>首先logit函数单调递增，容易求导</p>
 <p><img src="https://tva1.sinaimg.cn/large/0082zybpgy1gc9vh0d07cj319i0aqjud.jpg" alt="image-20200226161535757"></p>
-<h4 id="逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE"><a href="#逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE" class="headerlink" title="逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE"></a>逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE</h4><p>因为逻辑回归由于引入了sigmoid激活函数，如果使用MSE，损失函数是非凸的，不容易求解</p>
-<p>而使用交叉熵函数，其损失函数是凸函数</p>
+<h4 id="逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE"><a href="#逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE" class="headerlink" title="逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE"></a>逻辑回归为什么用交叉熵损失，不用MSE；线性回归用MSE</h4><p>两个方面的原因：</p>
+<ol>
+<li>逻辑回归使用了sigmoid激活函数，如果使用MSE作为损失函数，是非凸的；而使用交叉熵，损失函数是凸函数，更容易求解到极值点</li>
+<li>从梯度来看，使用MSE梯度要乘上一个sigmoid的导数，容易受到这个导数的影响；而使用交叉熵，梯度只与标签和预测值的误差有关，而且误差越大，梯度越大</li>
+</ol>
+<p>补充：对于一般的神经网络来说，分类也是使用交叉熵，这个是因为softmax激活后，使用交叉熵最后求解的参数值往往更好</p>
 <p>线性回归用MSE可以从正态分布角度考虑</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gdmb5ie0jdj313y0fu77f.jpg" alt="image-20200408134458870"></p>
 <p>我们现在要做的就是当前条件下使得这个概率连乘最大，也就是似然函数最大。所以就取对数，然后求导，推出</p>
@@ -1418,7 +1559,12 @@
 <h4 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h4><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geovrj19r7j30pq10kqv5.jpg" alt="image-20200511222944254" style="zoom: 50%;" />
 
 <h4 id="SMO优化"><a href="#SMO优化" class="headerlink" title="SMO优化"></a>SMO优化</h4><p>先初始化一对初值，主要思想就是每次选择两个alpha 然后其他alpha值当作常数固定，然后去迭代求解，直到收敛</p>
-<h4 id="SVM为什么要用对偶问题来求解"><a href="#SVM为什么要用对偶问题来求解" class="headerlink" title="SVM为什么要用对偶问题来求解"></a>SVM为什么要用对偶问题来求解</h4><p>主要是改变了求解问题的复杂度，原问题与样本纬度有关，而对偶问题与样本数量有关</p>
+<h4 id="SVM为什么要用对偶问题来求解"><a href="#SVM为什么要用对偶问题来求解" class="headerlink" title="SVM为什么要用对偶问题来求解"></a>SVM为什么要用对偶问题来求解</h4><p>主要是改变了求解问题的复杂度，原问题与样本纬度有关，而对偶问题与样本数量（支持向量）有关</p>
+<h4 id="SVM损失函数"><a href="#SVM损失函数" class="headerlink" title="SVM损失函数"></a>SVM损失函数</h4><p>第一个角度，即统计学习方法推导角度，最大化margin，同时对于一些异常点要有容错能力，引入了松弛变量，那么此时的损失函数为</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg8dd61okyj30mc0763zc.jpg" alt="image-20200628222451270"></p>
+<p>第二个角度，hinge损失，合页损失角度，每个样本带来了1-y*(wx+b)的损失，同时引入L2正则化项</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg8dgvwvwmj30kq03kq38.jpg" alt="image-20200628222828257"></p>
+<h4 id="LR和SVM都是线性分类器"><a href="#LR和SVM都是线性分类器" class="headerlink" title="LR和SVM都是线性分类器"></a>LR和SVM都是线性分类器</h4><p>这是由于他们的决策边界都是y=w*x+b</p>
 <h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><p>决策树是一种基本的分类与回归方法，决策树的学习包含三个步骤：特征选择、决策树的生成、决策树的剪枝</p>
 <p>比较典型的决策树模型有ID3,C4.5,CART</p>
 <h4 id="ID3决策树"><a href="#ID3决策树" class="headerlink" title="ID3决策树"></a>ID3决策树</h4><p>先介绍熵与条件熵</p>
@@ -1438,8 +1584,10 @@
 <h4 id="CART树"><a href="#CART树" class="headerlink" title="CART树"></a>CART树</h4><p>ID3和C4.5都是分类树</p>
 <p>CART树可以同时被用于分类和回归问题</p>
 <p>CART树一个比较典型的特征是每个节点只分裂两个子节点，是二叉树</p>
-<p>作为分类决策树时，使用gini指数最小化原则，gini指数也是类似熵的概念吧，就是值越大，表示这个集合越混乱。</p>
+<p>作为分类决策树时，使用gini指数最小化原则，gini指数也是类似熵的概念吧，就是值越大，表示这个集合越混乱。Pk为选定某个特征，敲定特征值后，样本类别的概率</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggtpye1kxqj30d40380sr.jpg" alt="image-20200717093657751"></p>
 <p>作为回归决策树时，使用平方误差最小化原则，就是分得的两个子节点内数据均方差最小，同时和也最小</p>
+<h4 id="GBDT如何衡量特征重要性"><a href="#GBDT如何衡量特征重要性" class="headerlink" title="GBDT如何衡量特征重要性"></a>GBDT如何衡量特征重要性</h4><p>计算每个特征在树中分裂时候不纯度的减少量，减少的越多，说明特征越重要。</p>
 <h4 id="为什么说bagging降低了方差，boosting降低了偏差"><a href="#为什么说bagging降低了方差，boosting降低了偏差" class="headerlink" title="为什么说bagging降低了方差，boosting降低了偏差"></a>为什么说bagging降低了方差，boosting降低了偏差</h4><p>首先模型的误差主要就是来源于两方面：偏差和方差</p>
 <p>偏差其实就是模型就是学的不好，而方差就是模型可能过拟合了，所以导致方差大</p>
 <p>对于方差，可以这样理解，加入有n个随机变量，如果方差是v,假设这n个变量是独立的，那么其均值的方差就是v/n。类比到bagging，但是bagging不是完全独立，但是各个模型之间相关性也是相对比较弱的，所以能有效降低方差。</p>
@@ -1516,6 +1664,9 @@
 <li>LR参数求解与所有的数据都有关，SVM只与少数的几个支持向量有关</li>
 <li>SVM比较适合特征维度高但是数据量小的数据集，不适合数据量大的数据集</li>
 </ol>
+<h3 id="LR和SVM关于核函数"><a href="#LR和SVM关于核函数" class="headerlink" title="LR和SVM关于核函数"></a>LR和SVM关于核函数</h3><p>首先LR和SVM都是线性分类器，所以在处理非线性分类问题时就得采取其他手段，比如核函数</p>
+<p>本来的做法是将低维向量映射到高维空间，再去做内积。但是这种方式有点开销太大，所以引入核函数，相当于直接计算映射到高维空间后的内积。</p>
+<p>LR当然也可以引入核函数，但是LR训练时候是考虑所有样本点的，所以开销太大了，因此有另外一种简便的方法，就是对不同的特征进行组合</p>
 <h3 id="机器学习归一化"><a href="#机器学习归一化" class="headerlink" title="机器学习归一化"></a>机器学习归一化</h3><p>不需要归一化：树模型，因为是否归一化不影响分裂节点的选择，树模型只关注值的分布</p>
 <p>需要归一化：LR SVM。归一化将损失函数的等高线从椭圆变为圆，加快梯度下降的过程。SVM与距离度量有关，所以也要归一化，避免某些特征影响过大。</p>
 
@@ -1856,7 +2007,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
